@@ -18,7 +18,7 @@ sudo yum install -y https://elrepo.org/linux/extras/el8/x86_64/RPMS/elrepo-relea
 
 
 Установим последнее ядро из репозитория elrepo-kernel:
-sudo yum --enablerepo elrepo-kernel install kernel-ml -y
+sudo yum --enablerepo=elrepo-kernel install kernel-ml -y --nogpgcheck
 
 
 После установки новой Ядры переключил на новую версию в конфигурациях.
