@@ -1,3 +1,54 @@
+Первым делом установил:
+- Virtualbox
+- установил Hashicorp Vagrant (https://www.vagrantup.com/downloads).
+
+Создал папку внутри неё файл vagrantfile.
+
+Поставил готовый код где написать скрипт для создания ВМ.
+
+
+После этого сохранив файл запустил скрипт командой vagrant up.
+
+
+#Проверил версию ядра 
+[vagrant@kernel-update ~]$ uname -r 
+4.18.0-516.el8.x86_64
+
+sudo yum install -y https://elrepo.org/linux/extras/el8/x86_64/RPMS/elrepo-release-8.2-1.el8.elrepo.noarch.rp
+
+
+Установим последнее ядро из репозитория elrepo-kernel:
+sudo yum --enablerepo=elrepo-kernel install kernel-ml -y --nogpgcheck
+
+
+После установки новой Ядры переключил на новую версию в конфигурациях.
+
+Если требуется, можно назначить новое ядро по-умолчанию вручную:
+1) Обновить конфигурацию загрузчика:
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+2) Выбрать загрузку нового ядра по-умолчанию:
+sudo grub2-set-default 0
+
+
+после этого перезгрузил ВМ 
+sudo reboot
+
+После перезгрузки ядро была обновлена.
+[vagrant@kernel-update ~]$ uname -r
+6.18.6-1.el8.elrepo.x86_64
+
+
+
+
+
+
+
+
+
+
+
+
+
 My first lab-work
 
 Vagrant - это инструмент с открытым исходным кодом для создания и управления виртуальными средами разработки.
